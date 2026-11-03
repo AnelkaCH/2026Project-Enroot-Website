@@ -1,26 +1,703 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Oswald:wght@400;500;600;700&display=swap');
+
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: #e9dfc7;
+  --paper-dark: #d7c9aa;
+  --ink: #292721;
+  --muted: #746b5b;
+  --red: #8f302a;
+  --line: #b7a98c;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: #b9ad94;
+  color: var(--ink);
+  font-family: "Courier Prime", monospace;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+.case-page {
+  position: relative;
+  width: min(100% - 32px, 1080px);
+  margin: 28px auto;
+  padding: 36px clamp(18px, 5vw, 58px);
+  overflow: hidden;
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(ellipse at 20% 20%, #ffffff35, transparent 55%),
+    radial-gradient(ellipse at 80% 75%, #a28b6320, transparent 50%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      #76694a08 4px
+    );
+  box-shadow: 0 8px 32px #29272130;
+}
+
+.case-page::before {
+  position: absolute;
+  inset: 9px;
+  border: 1px solid #9c8e713f;
+  content: "";
+  pointer-events: none;
+}
+
+.police-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 22px;
+  border-bottom: 2px solid var(--ink);
+}
+
+.department-mark {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  place-items: center;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  font-size: 30px;
+}
+
+.department-name {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.department-name strong,
+.header-case strong {
+  font-family: "Oswald", sans-serif;
+  font-size: clamp(12px, 2vw, 17px);
+  letter-spacing: 1px;
+}
+
+.department-name span,
+.header-case span {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.header-case {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-align: right;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 0.85fr;
+  gap: clamp(24px, 5vw, 56px);
+  align-items: center;
+  padding: 58px 0 48px;
+  border-bottom: 2px solid var(--ink);
+}
+
+.eyebrow,
+.field-label {
+  display: block;
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  line-height: 1.7;
+}
+
+.hero h1,
+.section-heading h2,
+.briefing h2 {
+  margin: 18px 0;
+  font-family: "Oswald", sans-serif;
+  font-size: clamp(48px, 7vw, 82px);
+  font-weight: 700;
+  letter-spacing: -2px;
+  line-height: 0.99;
+}
+
+.hero h1 span {
+  color: var(--red);
+}
+
+.red-rule {
+  width: 75px;
+  height: 5px;
+  margin: 24px 0;
+  background: var(--red);
+}
+
+.hero-description {
+  max-width: 390px;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.recruitment-note {
+  margin: 24px 0;
+  color: var(--red);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.case-link {
+  display: inline-block;
+  padding: 12px 15px;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 180ms, color 180ms;
+}
+
+.case-link:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.evidence-photo {
+  position: relative;
+  padding: 12px;
+  border: 1px solid var(--line);
+  background: #d9ceb4;
+  transform: rotate(1deg);
+}
+
+.photo-topline,
+.photo-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.photo-topline {
+  padding-bottom: 10px;
+}
+
+.photo-caption {
+  padding-top: 12px;
+}
+
+.crime-scene {
+  position: relative;
+  display: grid;
+  min-height: 310px;
+  overflow: hidden;
+  place-items: center;
+  background:
+    radial-gradient(ellipse at 50% 45%, #555044 0%, transparent 60%),
+    repeating-linear-gradient(110deg, #38362f 0 2px, #302f29 2px 5px);
+  filter: grayscale(1);
+}
+
+.crime-scene::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, #00000055, transparent 50%);
+  content: "";
+}
+
+.body-outline {
+  position: relative;
+  width: 180px;
+  height: 145px;
+  opacity: 0.8;
+  filter: drop-shadow(0 0 12px #000);
+}
+
+.body-outline span {
+  position: absolute;
+  display: block;
+  background: #c4bda9;
+}
+
+.body-head {
+  top: 52px;
+  left: 4px;
+  width: 34px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.body-torso {
+  top: 48px;
+  left: 38px;
+  width: 85px;
+  height: 38px;
+  border-radius: 40% 25% 25% 40%;
+  transform: rotate(-10deg);
+}
+
+.body-arm {
+  top: 62px;
+  width: 68px;
+  height: 12px;
+  border-radius: 10px;
+}
+
+.left-arm {
+  left: 46px;
+  transform: rotate(45deg);
+}
+
+.right-arm {
+  left: 88px;
+  transform: rotate(-38deg);
+}
+
+.body-leg {
+  top: 78px;
+  width: 74px;
+  height: 15px;
+  border-radius: 10px;
+}
+
+.left-leg {
+  left: 91px;
+  transform: rotate(-35deg);
+}
+
+.right-leg {
+  left: 94px;
+  top: 92px;
+  transform: rotate(22deg);
+}
+
+.scene-marker {
+  position: absolute;
+  z-index: 1;
+  top: 18%;
+  right: 20%;
+  display: grid;
+  width: 28px;
+  height: 35px;
+  place-items: center;
+  border: 2px solid #d2c7b0;
+  color: #d2c7b0;
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+}
+
+.scene-label {
+  position: absolute;
+  z-index: 1;
+  bottom: 12px;
+  left: 12px;
+  color: #e9dfc7;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+.stamp {
+  position: absolute;
+  top: 44%;
+  left: 50%;
+  z-index: 2;
+  padding: 6px 12px;
+  border: 3px solid var(--red);
+  color: var(--red);
+  font-family: "Oswald", sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  opacity: 0.88;
+  transform: translate(-50%, -50%) rotate(-15deg);
+}
+
+.case-summary > div,
+.suspect-meta > div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.case-summary strong,
+.suspect-meta strong {
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.suspects {
+  padding: 58px 0;
+  border-bottom: 2px solid var(--ink);
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.section-heading h2 {
+  margin: 8px 0;
+  font-size: clamp(38px, 6vw, 56px);
+}
+
+.file-number {
+  padding: 8px;
+  border: 1px solid var(--line);
+  font-size: 9px;
+  white-space: nowrap;
+}
+
+.section-intro {
+  max-width: 600px;
+  margin: 14px 0 28px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.suspect-file {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.72fr) 1.3fr;
+  gap: clamp(18px, 4vw, 42px);
+  padding: 22px;
+  border: 1px solid var(--line);
+  background: #dcd1b8a8;
+}
+
+.mugshot {
+  align-self: start;
+  padding: 8px;
+  border: 1px solid var(--line);
+  background: #c8bba0;
+}
+
+.mugshot-backdrop {
+  display: flex;
+  min-height: 230px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  background:
+    repeating-linear-gradient(0deg, #00000008 0 1px, transparent 1px 4px),
+    linear-gradient(145deg, #777365, #393830);
+  color: #e9dfc7;
+  filter: grayscale(1);
+}
+
+.mugshot-initials {
+  font-family: "Oswald", sans-serif;
+  font-size: 64px;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.mugshot-number {
+  display: block;
+  padding-top: 9px;
+  font-size: 9px;
+  text-align: center;
+}
+
+.suspect-details h3 {
+  margin: 8px 0 20px;
+  font-family: "Oswald", sans-serif;
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.1;
+}
+
+.suspect-meta {
+  display: grid;
+  grid-template-columns: 0.6fr 1.4fr;
+  gap: 12px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.alibi {
+  padding: 18px 0;
+}
+
+.alibi p {
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.8;
+}
+
+.suspicion {
+  padding-top: 10px;
+  border-top: 1px dashed var(--line);
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 0.5px;
+}
+
+.suspicion strong {
+  color: var(--red);
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 22px;
+}
+
+.carousel-controls > button {
+  padding: 10px 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.carousel-controls > button:hover {
+  color: var(--red);
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 9px;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.active-dot {
+  background: var(--red);
+  border-color: var(--red);
+}
+
+.carousel-count {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.briefing {
+  padding: 58px 0 42px;
+}
+
+.briefing h2 {
+  max-width: 650px;
+  font-size: clamp(38px, 6vw, 62px);
+}
+
+.briefing-intro {
+  max-width: 560px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.briefing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 28px;
+  margin-top: 32px;
+}
+
+.briefing-grid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.briefing-grid strong {
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.final-warning {
+  margin-top: 35px;
+  padding: 18px 12px;
+  border: 2px solid var(--red);
+  color: var(--red);
+  font-family: "Oswald", sans-serif;
+  font-size: clamp(15px, 3vw, 21px);
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 20px;
+  border-top: 2px solid var(--ink);
+  color: var(--muted);
+  font-size: 8px;
+  letter-spacing: 0.4px;
+}
+
+@media (max-width: 650px) {
+  .case-page {
+    width: calc(100% - 16px);
+    margin: 8px auto;
+    padding: 25px 18px;
+  }
+
+  .department-mark {
+    width: 38px;
+    height: 38px;
+    font-size: 24px;
+  }
+
+  .department-name strong {
+    font-size: 10px;
+  }
+
+  .department-name span,
+  .header-case span {
+    font-size: 8px;
+  }
+
+  .header-case strong {
+    font-size: 12px;
+  }
+
+  .status-bar {
+    font-size: 8px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 42px 0 34px;
+  }
+
+  .hero h1 {
+    font-size: clamp(52px, 13vw, 76px);
+  }
+
+  .crime-scene {
+    min-height: 260px;
+  }
+
+  .case-summary {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .suspects {
+    padding: 40px 0;
+  }
+
+  .section-heading {
+    align-items: start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .suspect-file {
+    grid-template-columns: 1fr;
+    padding: 14px;
+  }
+
+  .mugshot {
+    width: min(100%, 260px);
+    margin: auto;
+  }
+
+  .mugshot-backdrop {
+    min-height: 250px;
+  }
+
+  .suspect-meta {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .carousel-controls {
+    flex-wrap: wrap;
+  }
+
+  .carousel-controls > button {
+    font-size: 9px;
+  }
+
+  .briefing {
+    padding-top: 42px;
+  }
+
+  .briefing-grid {
+    gap: 0 14px;
+  }
+
+  .briefing-grid strong {
+    font-size: 10px;
+  }
+
+  .footer {
+    flex-direction: column;
+  }
+}
+
+.crime-scene img {
+  display: block;
+  width: 100%;
+  height: 310px;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.15);
+}
+
+.mugshot-backdrop {
+  position: relative;
+  overflow: hidden;
+}
+
+.mugshot-backdrop img {
+  display: block;
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.1);
+}
+
+.mugshot-placeholder {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+@media (max-width: 650px) {
+  .crime-scene img {
+    height: 260px;
+  }
 }

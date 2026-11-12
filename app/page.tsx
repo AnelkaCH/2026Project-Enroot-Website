@@ -163,7 +163,7 @@ export default function Home() {
             ))}
           </div>
           <span className="carousel-count">
-            {String(active + 1).padStart(2, "0")} / 02
+            {String(active + 1).padStart(2, "0")} / 04
           </span>
           <button
             onClick={() =>

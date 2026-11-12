@@ -5,6 +5,14 @@ import { useState } from "react";
 
 const suspects = [
   {
+    name: "Sam",
+    age: 19,
+    occupation: "Bassist",
+    alibi: "Why would you think it's me?",
+    initials: "S",
+    image: "images/sam.jpg",
+  },
+  {
     name: "Anelka",
     age: 19,
     occupation: "Drummer",
@@ -27,14 +35,6 @@ const suspects = [
     alibi: "Not me.",
     initials: "O",
     image: "images/oudam.jpg",
-  },
-  {
-    name: "Sam",
-    age: 19,
-    occupation: "Bassist",
-    alibi: "Why would you think it's me?",
-    initials: "S",
-    image: "images/sam.jpg",
   },
 ];
 

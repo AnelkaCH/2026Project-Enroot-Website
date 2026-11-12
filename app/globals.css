@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Oswald:wght@400;500;600;700&display=swap');
 
 @import "tailwindcss";
@@ -69,17 +68,6 @@ button {
   gap: 14px;
   padding-bottom: 22px;
   border-bottom: 2px solid var(--ink);
-}
-
-.department-mark {
-  display: grid;
-  width: 48px;
-  height: 48px;
-  flex-shrink: 0;
-  place-items: center;
-  border: 2px solid var(--ink);
-  border-radius: 50%;
-  font-size: 30px;
 }
 
 .department-name {
@@ -226,87 +214,6 @@ button {
   content: "";
 }
 
-.body-outline {
-  position: relative;
-  width: 180px;
-  height: 145px;
-  opacity: 0.8;
-  filter: drop-shadow(0 0 12px #000);
-}
-
-.body-outline span {
-  position: absolute;
-  display: block;
-  background: #c4bda9;
-}
-
-.body-head {
-  top: 52px;
-  left: 4px;
-  width: 34px;
-  height: 32px;
-  border-radius: 50%;
-}
-
-.body-torso {
-  top: 48px;
-  left: 38px;
-  width: 85px;
-  height: 38px;
-  border-radius: 40% 25% 25% 40%;
-  transform: rotate(-10deg);
-}
-
-.body-arm {
-  top: 62px;
-  width: 68px;
-  height: 12px;
-  border-radius: 10px;
-}
-
-.left-arm {
-  left: 46px;
-  transform: rotate(45deg);
-}
-
-.right-arm {
-  left: 88px;
-  transform: rotate(-38deg);
-}
-
-.body-leg {
-  top: 78px;
-  width: 74px;
-  height: 15px;
-  border-radius: 10px;
-}
-
-.left-leg {
-  left: 91px;
-  transform: rotate(-35deg);
-}
-
-.right-leg {
-  left: 94px;
-  top: 92px;
-  transform: rotate(22deg);
-}
-
-.scene-marker {
-  position: absolute;
-  z-index: 1;
-  top: 18%;
-  right: 20%;
-  display: grid;
-  width: 28px;
-  height: 35px;
-  place-items: center;
-  border: 2px solid #d2c7b0;
-  color: #d2c7b0;
-  font-family: "Oswald", sans-serif;
-  font-weight: 700;
-}
-
 .scene-label {
   position: absolute;
   z-index: 1;
@@ -317,30 +224,12 @@ button {
   letter-spacing: 1px;
 }
 
-.stamp {
-  position: absolute;
-  top: 44%;
-  left: 50%;
-  z-index: 2;
-  padding: 6px 12px;
-  border: 3px solid var(--red);
-  color: var(--red);
-  font-family: "Oswald", sans-serif;
-  font-size: 19px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  opacity: 0.88;
-  transform: translate(-50%, -50%) rotate(-15deg);
-}
-
-.case-summary > div,
 .suspect-meta > div {
   display: flex;
   flex-direction: column;
   gap: 7px;
 }
 
-.case-summary strong,
 .suspect-meta strong {
   font-size: 14px;
   line-height: 1.7;
@@ -361,13 +250,6 @@ button {
 .section-heading h2 {
   margin: 8px 0;
   font-size: clamp(38px, 6vw, 56px);
-}
-
-.file-number {
-  padding: 8px;
-  border: 1px solid var(--line);
-  font-size: 9px;
-  white-space: nowrap;
 }
 
 .section-intro {
@@ -395,24 +277,19 @@ button {
 }
 
 .mugshot-backdrop {
+  position: relative;
   display: flex;
   min-height: 230px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 22px;
+  overflow: hidden;
   background:
     repeating-linear-gradient(0deg, #00000008 0 1px, transparent 1px 4px),
     linear-gradient(145deg, #777365, #393830);
   color: #e9dfc7;
   filter: grayscale(1);
-}
-
-.mugshot-initials {
-  font-family: "Oswald", sans-serif;
-  font-size: 64px;
-  font-weight: 600;
-  opacity: 0.8;
 }
 
 .mugshot-number {
@@ -447,18 +324,6 @@ button {
   line-height: 1.8;
 }
 
-.suspicion {
-  padding-top: 10px;
-  border-top: 1px dashed var(--line);
-  color: var(--muted);
-  font-size: 9px;
-  letter-spacing: 0.5px;
-}
-
-.suspicion strong {
-  color: var(--red);
-}
-
 .carousel-controls {
   display: flex;
   align-items: center;
@@ -472,7 +337,7 @@ button {
   border: none;
   background: transparent;
   cursor: pointer;
-  font-size: 10px;
+  font-size: 18px;
   font-weight: 700;
 }
 
@@ -565,17 +430,27 @@ button {
   letter-spacing: 0.4px;
 }
 
+.crime-scene img {
+  display: block;
+  width: 100%;
+  height: 310px;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.15);
+}
+
+.mugshot-backdrop img {
+  display: block;
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.1);
+}
+
 @media (max-width: 650px) {
   .case-page {
     width: calc(100% - 16px);
     margin: 8px auto;
     padding: 25px 18px;
-  }
-
-  .department-mark {
-    width: 38px;
-    height: 38px;
-    font-size: 24px;
   }
 
   .department-name strong {
@@ -589,10 +464,6 @@ button {
 
   .header-case strong {
     font-size: 12px;
-  }
-
-  .status-bar {
-    font-size: 8px;
   }
 
   .hero {
@@ -609,9 +480,8 @@ button {
     min-height: 260px;
   }
 
-  .case-summary {
-    grid-template-columns: 1fr;
-    gap: 18px;
+  .crime-scene img {
+    height: 260px;
   }
 
   .suspects {
@@ -647,7 +517,7 @@ button {
   }
 
   .carousel-controls > button {
-    font-size: 9px;
+    font-size: 12px;
   }
 
   .briefing {
@@ -664,40 +534,5 @@ button {
 
   .footer {
     flex-direction: column;
-  }
-}
-
-.crime-scene img {
-  display: block;
-  width: 100%;
-  height: 310px;
-  object-fit: cover;
-  filter: grayscale(1) contrast(1.15);
-}
-
-.mugshot-backdrop {
-  position: relative;
-  overflow: hidden;
-}
-
-.mugshot-backdrop img {
-  display: block;
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  filter: grayscale(1) contrast(1.1);
-}
-
-.mugshot-placeholder {
-  position: absolute;
-  bottom: 10px;
-  left: 0;
-  width: 100%;
-  text-align: center;
-}
-
-@media (max-width: 650px) {
-  .crime-scene img {
-    height: 260px;
   }
 }

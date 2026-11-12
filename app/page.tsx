@@ -197,7 +197,7 @@ export default function Home() {
           </div>
           <div>
             <span className="field-label">NUMBER OF DETECTIVES</span>
-            <strong>ANY</strong>
+            <strong>2 - 5</strong>
           </div>
         </div>
 

@@ -7,7 +7,7 @@ const suspects = [
   {
     name: "Anelka",
     age: 19,
-    occupation: "Drummer of a local band, Barista",
+    occupation: "Drummer",
     alibi: "I ain't got nothing to do with this.",
     initials: "A",
     image: "images/anelka.jpeg",

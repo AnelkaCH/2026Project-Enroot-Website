@@ -5,35 +5,35 @@ import { useState } from "react";
 
 const suspects = [
   {
-    name: "Evan Koski",
-    age: 18,
+    name: "Anelka",
+    age: 19,
     occupation: "Drummer of a local band, Barista",
     alibi: "I ain't got nothing to do with this.",
-    initials: "EK",
+    initials: "A",
     image: "images/male-mugshots-placeholder.png",
   },
   {
-    name: "Lixsa Mass",
+    name: "Xuan",
     age: 19,
-    occupation: "Vocalist of a local band, Make up artist",
+    occupation: "Drummer",
     alibi: "I'm too beautiful to be a murderer.",
-    initials: "LM",
+    initials: "X",
     image: "images/female-mugshots-placeholder.png",
   },
   // {
-  //   name: "Arthur Wells",
-  //   age: 51,
-  //   occupation: "Family Doctor",
-  //   alibi: "Insists the death was an accident.",
-  //   initials: "AW",
+  //   name: "Oudam",
+  //   age: 19,
+  //   occupation: "Rhythm guitarist",
+  //   alibi: "Not me.",
+  //   initials: "O",
   //   image: "/public/images/arthur.jpg",
   // },
   // {
-  //   name: "Clara Finch",
-  //   age: 28,
-  //   occupation: "Journalist",
-  //   alibi: "Claims she knows nothing about the case.",
-  //   initials: "CF",
+  //   name: "Sam",
+  //   age: 19,
+  //   occupation: "Bassist",
+  //   alibi: "Why would you think it's me?",
+  //   initials: "S",
   //   image: "/public/images/clara.jpg",
   // },
 ];
@@ -83,10 +83,9 @@ export default function Home() {
           </div>
           <div className="crime-scene">
             <img
-              src="/images/crime-scene-placeholder.jpg"
+              src="/images/crime-scene.jpg"
               alt="Crime scene evidence photograph"
             />
-            <span className="scene-marker">01</span>
             <span className="scene-label">
               SCENE UNDER INVESTIGATION
             </span>
@@ -95,7 +94,6 @@ export default function Home() {
             <span>FIG. A — LOCATION OF VICTIM</span>
             <span>TIME: 23:47 HRS</span>
           </div>
-          <div className="stamp">TOP SECRET</div>
         </div>
       </section>
 
@@ -191,11 +189,11 @@ export default function Home() {
           </div>
           <div>
             <span className="field-label">TIME</span>
-            <strong>13:00 - 16:00</strong>
+            <strong>14:00 - 17:00</strong>
           </div>
           <div>
             <span className="field-label">LOCATION</span>
-            <strong>DANCE ROOM 1-3</strong>
+            <strong>DANCE ROOM 3, 4, 5</strong>
           </div>
           <div>
             <span className="field-label">NUMBER OF DETECTIVES</span>

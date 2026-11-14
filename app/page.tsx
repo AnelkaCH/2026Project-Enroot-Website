@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const suspects = [
   {
@@ -11,6 +11,7 @@ const suspects = [
     alibi: "Why would you think it's me?",
     initials: "S",
     image: "images/sam.jpg",
+    thumbnail: "images/thumbs/sam.webp",
   },
   {
     name: "Anelka",
@@ -19,6 +20,7 @@ const suspects = [
     alibi: "I ain't got nothing to do with this.",
     initials: "A",
     image: "images/anelka.jpeg",
+    thumbnail: "images/thumbs/anelka.webp",
   },
   {
     name: "Xuan",
@@ -27,6 +29,7 @@ const suspects = [
     alibi: "I think it's Anelka",
     initials: "X",
     image: "images/xuan.jpg",
+    thumbnail: "images/thumbs/xuan.webp",
   },
   {
     name: "Oudam",
@@ -35,14 +38,23 @@ const suspects = [
     alibi: "Not me.",
     initials: "O",
     image: "images/oudam.jpg",
+    thumbnail: "images/thumbs/oudam.webp",
   },
 ];
 
 
 export default function Home() {
   const [active, setActive] = useState(0);
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
 
   const suspect = suspects[active];
+
+  useEffect(() => {
+    suspects.forEach(({ thumbnail }) => {
+      const preloadedImage = new window.Image();
+      preloadedImage.src = `/${thumbnail}`;
+    });
+  }, []);
 
   return (
     <main className="case-page">
@@ -112,7 +124,26 @@ export default function Home() {
         <div className="suspect-file">
           <div className="mugshot">
             <div className="mugshot-backdrop">
-              <img src={suspect.image} alt={`Mugshot of ${suspect.name}`} />
+              <img
+                className={`mugshot-image mugshot-thumbnail${loadedImages.has(suspect.image) ? " mugshot-thumbnail-hidden" : ""}`}
+                src={`/${suspect.thumbnail}`}
+                alt=""
+                aria-hidden="true"
+              />
+              <img
+                className={`mugshot-image mugshot-live${loadedImages.has(suspect.image) ? " mugshot-live-loaded" : ""}`}
+                src={`/${suspect.image}`}
+                alt={`Mugshot of ${suspect.name}`}
+                onLoad={() =>
+                  setLoadedImages((current) => {
+                    if (current.has(suspect.image)) {
+                      return current;
+                    }
+
+                    return new Set(current).add(suspect.image);
+                  })
+                }
+              />
             </div>
 
             <span className="mugshot-number">

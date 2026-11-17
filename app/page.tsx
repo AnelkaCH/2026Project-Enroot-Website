@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 const suspects = [
   {
     name: "Sam",
-    age: 19,
+    age: 24,
     occupation: "Bassist",
     alibi: "Why would you think it's me?",
     initials: "S",
@@ -83,9 +83,18 @@ export default function Home() {
           <p className="recruitment-note">
             DO YOU HAVE THE WITS TO SOLVE THIS MYSTERY?
           </p>
-          <a className="case-link" href="#briefing">
-            CHECK EVENT DETAILS ↓
-          </a>
+          <div className="hero-section-actions">
+            <a className="case-link case-link-bot"
+              href="https://t.me/sutdhorrorbot"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Continue on the Murder Mystery Bot →
+            </a>
+            <a className="case-link" href="#briefing">
+              CHECK EVENT DETAILS ↓
+            </a>
+          </div>
         </div>
 
         <div className="evidence-photo">
@@ -232,9 +241,13 @@ export default function Home() {
           </div>
         </div>
 
-        <p className="final-warning">
-          NO CASE IS CLOSED UNTIL THE TRUTH IS KNOWN.
-        </p>
+        <a className="final-warning"
+          href="https://t.me/sutdhorrorbot"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          NO CASE IS CLOSED UNTIL THE TRUTH IS KNOWN. SOLVE THE CASE WITH @SUTD-HORROR-BOT.
+        </a>
       </section>
 
       <footer className="footer">

@@ -154,6 +154,12 @@ button {
   letter-spacing: 0.5px;
 }
 
+.hero-section-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .case-link {
   display: inline-block;
   padding: 12px 15px;
@@ -168,6 +174,17 @@ button {
 .case-link:hover {
   background: var(--ink);
   color: var(--paper);
+}
+
+.case-link-bot {
+  margin-bottom: 16px;
+  border-color: var(--red);
+  background: var(--red);
+  color: var(--paper);
+}
+
+.case-link-bot:hover {
+  border-color: var(--blue);
 }
 
 .evidence-photo {
@@ -435,6 +452,7 @@ button {
 }
 
 .final-warning {
+  display: block;
   margin-top: 35px;
   padding: 18px 12px;
   border: 2px solid var(--red);
@@ -444,6 +462,13 @@ button {
   font-weight: 700;
   letter-spacing: 1px;
   text-align: center;
+  text-decoration: none;
+  transition: background 180ms, color 180ms;
+}
+
+.final-warning:hover {
+  background: var(--red);
+  color: var(--paper);
 }
 
 .footer {
